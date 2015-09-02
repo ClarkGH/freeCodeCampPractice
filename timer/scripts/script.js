@@ -5,19 +5,26 @@ $( document ).ready(
 
     var counter = setInterval(timer, 1000);
 
-    function timer (){
+    function timer() {
       if (minute == 0 && second == 0) {
         clearInterval(counter);
         alert('Time is up.');
-        return
+        return;
       } else {
-        console.log("hi")
+        console.log("hi");
       }
     }
 
+    function stopTimer() {
+      clearInterval(counter);
+    }
 
 
     $('#minute').text(minute);
     $('#second').text(second);
+    $('#start').on('click', function(){
+      counter = setInterval(timer,1000);
+    });
+    $('#stop').on('click', stopTimer);
   }
 );
