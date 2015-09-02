@@ -1,17 +1,12 @@
 $( document ).ready(
   function(){
-    
-    function startTimer(){
+    var refreshIntervalId = function() {
       setInterval(function(){
-        console.log("hi");
+        console.log('hi');
       }, 1000);
     }
-    
-    function stopTimer(){
-      clearInterval(startTimer);
-    }
-    
-    $('#start').on('click', startTimer);
-    $('#stop').on('click', stopTimer);
+
+    $('#start').on('click', refreshIntervalId);
+    $('#stop').on('click', clearInterval(refreshIntervalId));
   }
 );
