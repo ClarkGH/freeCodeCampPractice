@@ -11,17 +11,22 @@ $( document ).ready(
         alert('Time is up.');
         return;
       } else {
-        console.log("hi");
+        switch(second) {
+          case 00:
+            second = 59;
+            minute -= 1;
+          default:
+            second -= 1;
+        }
       }
+      $('#minute').text(minute);
+      $('#second').text(second);
     }
 
     function stopTimer() {
       clearInterval(counter);
     }
 
-
-    $('#minute').text(minute);
-    $('#second').text(second);
     $('#start').on('click', function(){
       counter = setInterval(timer,1000);
     });
