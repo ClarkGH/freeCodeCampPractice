@@ -23,7 +23,7 @@ $( document ).ready(
       updateClock();
     }
     function takeMinute() {
-      if (minute >= 00) {
+      if (minute > 0) {
         minute -= 1
       } else {
         alert("The minmum amount of time you can set is 0 minutes");
