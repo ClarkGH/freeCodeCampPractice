@@ -14,7 +14,7 @@ $( document ).ready(
     }
 
     function addMinute() {
-      if (minute <= 60) {
+      if (minute < 60) {
         minute += 1
       } else {
         alert("The maximum amount of time you can set is 60 minutes");
