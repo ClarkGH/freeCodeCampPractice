@@ -6,7 +6,11 @@ $( document ).ready(
 
     function updateClock() {
       $('#minute').text(minute);
-      $('#second').text(second);
+      if (second == 00 ) {
+        $('#second').text("00");
+      } else {
+        $('#second').text(second);
+      }
     }
 
     function addMinute() {
