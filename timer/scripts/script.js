@@ -1,12 +1,23 @@
 $( document ).ready(
   function(){
-    var refreshIntervalId = function() {
-      setInterval(function(){
-        console.log('hi');
-      }, 1000);
+    var minute = 25;
+    var second = 00;
+
+    var counter = setInterval(timer, 1000);
+
+    function timer (){
+      if (minute == 0 && second == 0) {
+        clearInterval(counter);
+        alert('Time is up.');
+        return
+      } else {
+        console.log("hi")
+      }
     }
 
-    $('#start').on('click', refreshIntervalId);
-    $('#stop').on('click', clearInterval(refreshIntervalId));
+
+
+    $('#minute').text(minute);
+    $('#second').text(second);
   }
 );
