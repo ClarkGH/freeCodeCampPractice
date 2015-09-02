@@ -9,6 +9,25 @@ $( document ).ready(
       $('#second').text(second);
     }
 
+    function addMinute() {
+      if (minute <= 60) {
+        minute += 1
+      } else {
+        alert("The maximum amount of time you can set is 60 minutes");
+      }
+      second = 00;
+      updateClock();
+    }
+    function takeMinute() {
+      if (minute >= 00) {
+        minute -= 1
+      } else {
+        alert("The minmum amount of time you can set is 0 minutes");
+      }
+      second = 00;
+      updateClock();
+    }
+
     function timer() {
       if (minute == 0 && second == 0) {
         clearInterval(counter);
@@ -41,7 +60,10 @@ $( document ).ready(
     $('#start').on('click', function(){
       counter = setInterval(timer,1000);
     });
+    $('#addMinute').on('click', addMinute);
+    $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
+
   }
 );
