@@ -6,7 +6,30 @@ $( document ).ready(
 
     function updateClock() {
       $('#minute').text(minute);
-      $('#second').text(second);
+      if (second == 00 ) {
+        $('#second').text("00");
+      } else {
+        $('#second').text(second);
+      }
+    }
+
+    function addMinute() {
+      if (minute <= 60) {
+        minute += 1
+      } else {
+        alert("The maximum amount of time you can set is 60 minutes");
+      }
+      second = 00;
+      updateClock();
+    }
+    function takeMinute() {
+      if (minute > 0) {
+        minute -= 1
+      } else {
+        alert("The minmum amount of time you can set is 0 minutes");
+      }
+      second = 00;
+      updateClock();
     }
 
     function timer() {
@@ -19,11 +42,13 @@ $( document ).ready(
           case 00:
             second = 59;
             minute -= 1;
+            updateClock();
+            return
           default:
             second -= 1;
+            updateClock();
         }
       }
-      updateClock();
     }
 
     function stopTimer() {
@@ -39,7 +64,10 @@ $( document ).ready(
     $('#start').on('click', function(){
       counter = setInterval(timer,1000);
     });
+    $('#addMinute').on('click', addMinute);
+    $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
+
   }
 );
