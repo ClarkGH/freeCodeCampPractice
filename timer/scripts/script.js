@@ -19,11 +19,13 @@ $( document ).ready(
           case 00:
             second = 59;
             minute -= 1;
+            updateClock();
+            return
           default:
             second -= 1;
+            updateClock();
         }
       }
-      updateClock();
     }
 
     function stopTimer() {
