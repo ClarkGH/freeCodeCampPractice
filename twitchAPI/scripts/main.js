@@ -13,6 +13,8 @@ $( document ).ready( function() {
                     "noobs2ninjas",
                     "beohoff"]
   function getStream(stream){
+    var isStreaming = false;
+
     $.getJSON( url + "/streams/" + stream + "?client_id=" + token + "&callback=?" 
       ).success(function( data ) {
         if(data.stream === null) {
@@ -20,11 +22,13 @@ $( document ).ready( function() {
           console.log(data._links.channel);
           console.log(data._links.self);
         } else {
+          isStreaming = true;
           console.log(data._links.channel);
           console.log(data._links.self);
           console.log(data.stream.game);
           console.log(data.stream.preview.small);
         }
+        
       });
   }
 
