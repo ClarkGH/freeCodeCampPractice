@@ -39,5 +39,7 @@ $( document ).ready( function() {
       });
   }
 
-  getStream( streamers[1] );
+  for (var i = 0; i < streamers.length; i++) {
+    getStream(streamers[i]);
+  }
 });
