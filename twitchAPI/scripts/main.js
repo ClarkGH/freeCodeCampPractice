@@ -19,9 +19,10 @@ $( document ).ready( function() {
       ).success(function( data ) {
         if(data.stream === null) {
           console.log(data);
+          console.log(data.stream) //this will be null since there is no streaming ongoing
           console.log(data._links.channel);
           console.log(data._links.self);
-          $('.isStreaming').html('<a href=' + data._links.self + '>Google</a>');
+          $('.isStreaming').html('<a href=' + data.stream.channel.status + '>Google</a>');
         } else {
           isStreaming = true;
           console.log(data._links.channel);
