@@ -1,8 +1,8 @@
 $( document ).ready(
   function(){
+    var counter
     var minute = 25;
     var second = 00;
-    var counter = setInterval(timer, 1000);
 
     function updateClock() {
       $('#minute').text(minute);
