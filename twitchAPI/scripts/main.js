@@ -21,6 +21,7 @@ $( document ).ready( function() {
           console.log(data);
           console.log(data._links.channel);
           console.log(data._links.self);
+          $('.isStreaming').html('<a href=' + data._links.self + '>Google</a>');
         } else {
           isStreaming = true;
           console.log(data._links.channel);
@@ -28,7 +29,7 @@ $( document ).ready( function() {
           console.log(data.stream.game);
           console.log(data.stream.preview.small);
         }
-        
+
       });
   }
 
