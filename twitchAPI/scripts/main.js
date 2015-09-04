@@ -22,6 +22,8 @@ $( document ).ready( function() {
           console.log("http://twitch.tv." + stream);
           console.log(data._links.channel);
           console.log(data._links.self);
+          $('.isNotStreaming').html('<a href= http://twitch.tv/' + stream + '>' + stream + ' is not currently online. </a>');
+
         } else {
           isStreaming = true;
           console.log("http://twitch.tv." + stream);
@@ -31,11 +33,11 @@ $( document ).ready( function() {
           // console.log(data.stream.url)
           // console.log(data.stream.game);
           // console.log(data.stream.preview.small);
-          $('.isStreaming').html('<a href= http://twitch.tv/' + stream + '>Google</a>');
+          $('.isStreaming').html('<a href= http://twitch.tv/' + stream + '>' + data.stream.channel.display_name + ' is now playing : ' + data.stream.channel.game + '</a>');
         }
 
       });
   }
 
-  getStream( streamers[2] );
+  getStream( streamers[1] );
 });
