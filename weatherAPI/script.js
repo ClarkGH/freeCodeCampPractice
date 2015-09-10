@@ -7,7 +7,6 @@ $(document).ready(function( ) {
   function getWeather(location) {
     var latitude = location[0];
     var longitude = location[1];
-
     var url = "http://api.openweathermap.org/data/2.5/weather?lat=" + latitude + "&lon=" + longitude + "&units=imperial";
 
     $.get( url, function( data ){
