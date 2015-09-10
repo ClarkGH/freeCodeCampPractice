@@ -16,9 +16,11 @@ function sym(args) {
       });
     };
 
-    return args.map(getUniqueVal).reduce(function(arr1, arr2){
+    var uniqueArr = args.map(getUniqueVal);
+    var answer = uniqueArr.reduce(function(arr1, arr2){
       return getCommonVal(arr1, arr2).concat(getCommonVal(arr2, arr1));
     });
+  
+    return answer;
 }
-
-sym([1, 2, 3],[5, 2, 1, 4]);
+sym([1, 1, 2, 5], [2, 2, 3, 5], [3, 4, 5, 5])
