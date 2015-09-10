@@ -1,5 +1,8 @@
 function sym(args) {
     var args = [args, ];
+    var uniqueArr;
+    var answer;
+  
     for( var i = 1; i < arguments.length; i++){
       args.push(arguments[i]);
     }
@@ -16,8 +19,9 @@ function sym(args) {
       });
     };
 
-    var uniqueArr = args.map(getUniqueVal);
-    var answer = uniqueArr.reduce(function(arr1, arr2){
+    uniqueArr = args.map(getUniqueVal);
+  
+    answer = uniqueArr.reduce(function(arr1, arr2){
       return getCommonVal(arr1, arr2).concat(getCommonVal(arr2, arr1));
     });
   
