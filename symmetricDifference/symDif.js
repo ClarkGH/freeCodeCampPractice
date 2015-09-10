@@ -10,7 +10,6 @@
 
 function sym(args) {
     var args = [args, ];
-    var commonVal = [];
     for( var i = 1; i < arguments.length; i++){
       args.push(arguments[i]);
     }
@@ -23,7 +22,15 @@ function sym(args) {
       });
     };
 
-    commonVal.push(getCommonVal(args[0],args[1]));
+    function getUniqueVal(arr){
+      return arr.filter(function(val, i){
+        return arr.indexOf(val) === i;
+      });
+    };
+
+    return args.map(getUniqueVal).reduce(function(arr1, arr2){
+      return getCommonVal(arr1, arr2).concat(getCommonVal(arr2, arr1));
+    });
 
 
 
