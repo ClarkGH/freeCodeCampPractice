@@ -57,3 +57,12 @@ take 10 (repeat 5)
 replicate 3 10 
 --returns [10,10,10]
 
+[x^2 | x <- [1..10]]
+--is a list comprehension
+--returns [2,4,6,8,10,12,14,16,18,20]
+
+[x*2 | x <- [1..10], x*2 >= 12]  
+--returns [12,14,16,18,20]
+
+[ x | x <- [50..100], x `mod` 7 == 3]  
+--returns [52,59,66,73,80,87,94]
