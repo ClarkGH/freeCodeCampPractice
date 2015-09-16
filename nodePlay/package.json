@@ -1,0 +1,11 @@
+{
+  "name": "@clarkgh/playing-games",
+  "version": "1.0.0",
+  "description": "I'm digging deep into npm",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "clark hinchcliff",
+  "license": "MIT"
+}
