@@ -1,7 +1,7 @@
-var answer = 0;
+var fs = require('fs');
+var fileName = process.argv[2];
+var file = fs.readFileSync(fileName);
 
-for (i = 2; i < process.argv.length; i++){
-  answer += Number(process.argv[i]);
-}
+var string = file.toString();
 
-console.log(answer);
+console.log(string.split('\n').length - 1);
