@@ -1,12 +1,8 @@
-var filterFn = require('./solution_filter.js')
-var dir = process.argv[2]
-var filterStr = process.argv[3]
+var http = require('http');
+var url = process.argv[2];
 
-filterFn(dir, filterStr, function (err, list) {
-  if (err)
-    return console.error('There was an error:', err)
-
-  list.forEach(function (file) {
-    console.log(file)
-  })
-})
+http.get( url, function(res){
+  res.setEncoding('utf8');
+  res.on("data", console.log);
+  res.on("error", console.error);
+});
