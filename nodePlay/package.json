@@ -4,8 +4,12 @@
   "description": "I'm digging deep into npm",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "node test.js"
   },
   "author": "clark hinchcliff",
-  "license": "MIT"
+  "repository":"https://github.com/ClarkGH/freeCodeCampPractice",
+  "license": "MIT",
+  "dependencies": {
+    "@linclark/pkg": "^1.0.2"
+  }
 }
