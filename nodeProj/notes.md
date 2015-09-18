@@ -121,3 +121,4 @@ var fs = require('fs');
 fs.createReadStream('./data/customers.csv').pipe(process.stdout);
 
 [How to debug in Node.js](http://nodejs.org/api/debugger.html)
+[Node Inspector](https://github.com/ node-inspector/node-inspector)
