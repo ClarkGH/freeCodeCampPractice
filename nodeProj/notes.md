@@ -111,7 +111,7 @@ fs.writeFile('message.txt', 'Hello World!', function (err) {
   console.log('Writing is done.');
 });
 
-###Streaming Data in Node.js
+###Streaming Data in Node.jsz
 
 Streaming data is a phrase that means an application processes the data while it’s still receiving it. This feature is useful for extra large datasets such as video or database migrations.
 
@@ -119,3 +119,5 @@ Here’s a basic example of using streams that output the binary file content ba
 
 var fs = require('fs');
 fs.createReadStream('./data/customers.csv').pipe(process.stdout);
+
+[How to debug in Node.js](http://nodejs.org/api/debugger.html)
