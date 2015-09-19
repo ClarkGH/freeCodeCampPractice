@@ -122,3 +122,39 @@ fs.createReadStream('./data/customers.csv').pipe(process.stdout);
 
 [How to debug in Node.js](http://nodejs.org/api/debugger.html)
 [Node Inspector](https://github.com/ node-inspector/node-inspector)
+
+##Express.js
+Express.js is a web framework based on the core Node.js [http module and Connect](http://www.senchalabs.org/ connect/) components.
+
+Express is a web framework based on middle ware components. If you use only core node.js modules, you'll find yourself reinventing the wheel by repeating the same code continuosly for similar tasks. Tasks like:
+1. parsing http request bodies
+2. parsing cookies
+3. managing sessions
+4. organizing route with a chanin of 'if' conditions based on URL paths and HTTP methods of the requests.
+5. Determining proper response headers based on data types.
+
+[REST](https://en.wikipedia.org/wiki/Representational_state_transfer)
+
+To be MVC, you will need an ORM (sequelize or bookshelf)
+
+Some analogies to developers who are familiar with Ruby—Express.js is often seen as Sinatra, which has a very different approach to the Ruby on Rails framework. Express.js and Sinatra promote the configurability while Ruby on Rails convention over configuration.
+
+Express vs Meteor vs Derby
+
+###How Express.js Works
+Express.js usually has an entry point, aka a main file. Most of the time the file is started with the node command; or export in a module, in some cases. In this study I will do the following.
+1. Include third-pary dependencies as well as my own modules, such as controllers, utilities, helpers, and models.
+2. Configure Express.js app settings such as template engine and its file extensions
+3. Connect to databases such as MongoDB, Redis, or MySQL.
+4. Define middleware such as error handlers, static files folder, cookies, and other parsers
+5. Define routes
+6. Start the app
+7. Export the app as a module (optional)
+
+When the express.js app is running, it's listening to requests. Some middleware purposes are:
+1. Parse cookie info and put it into the req object for following middleware/routes
+2. Parse parameters from the URL and put it in the req object for following middleware/routes
+3. Get the information from the database based on the value of the parameter if the user is authorized (cookie/session) and put it in the req object for following middleware/routes
+4. Authorize users/requests, or not
+5. Display the data and end the response.
+
