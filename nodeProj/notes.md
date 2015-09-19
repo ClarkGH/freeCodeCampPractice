@@ -158,4 +158,14 @@ When the express.js app is running, it's listening to requests. Some middleware 
 4. Authorize users/requests, or not
 5. Display the data and end the response.
 
+The middleware includes pass-through functions that either do something useful or add something helpful to the request as it travels along each of them. For example, bodyParser() and cookieParser() add HTTP request payload (req.body) and parsed cookie data (req.cookie), respectively. And in my express-styl/app.js, app.use(logger('dev')); is tirelessly printing in the terminal pretty logs for each request. In Express.js 3.x, many of these middleware were part of the Express.js module, but not in version 4.x. For this reason, the generator declared and included, and we installed additional modules like static-favicon, morgan, cookie-parser and body-parser.
 
+From a developer’s point of view, the blod app has the following elements:
+1. Main file app.js: settings, inclusions of routes, and other important logic. This is where we run when we start the server.
+2. Routes: all the logic related to pages and abstracted from app.js based on functional meaning, such as getting the data from the database and compiling the data into HTML
+3. Node.js project file package.json: dependencies and other meta data
+4. Dependencies in node_modules: third-party modules installed via package.json
+5. Database: an instance of MongoDB and some seed data
+6. Templates: the *.jade files
+7. Static files: such as *.css or browser *.js
+8. Configuration file config.json: security-insensitive applicationwide settings, such as app title
