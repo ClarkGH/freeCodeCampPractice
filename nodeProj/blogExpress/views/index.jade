@@ -1,6 +1,14 @@
-Body
-  div#content
-    h1 Clark's Blog
-    p This is how things are working. Blah blah blah.
-  div
-    footer contact info and other links here
+extends layout
+
+block page
+  - var menu = 'index'
+block content
+  if (articles.length === 0)
+    | There's no published content yet.
+    a(href="/login") Log in
+    | to post and publish.
+  else
+    each article, index in articles
+      div
+        h2
+          a(href="/articles/#{article.slug}") = article.title
