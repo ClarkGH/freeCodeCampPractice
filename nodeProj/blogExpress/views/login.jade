@@ -1,0 +1,17 @@
+extends layout
+
+block page
+  - var menu = 'login'
+
+block content
+  .col-md-4.col-offset-4
+    h2 Log in
+    div= error
+    div
+      form(action="/login", method="POST")
+        p
+          input.form-control(name="email", type="text", placeholder="Hello")
+        p
+          input.form-control(name="password", type="password", placeholder="***")
+        p
+          input.btn.btn-lg.btn-primary.btm-block(type="submit") Log in
