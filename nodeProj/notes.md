@@ -169,3 +169,5 @@ From a developer’s point of view, the blod app has the following elements:
 6. Templates: the *.jade files
 7. Static files: such as *.css or browser *.js
 8. Configuration file config.json: security-insensitive applicationwide settings, such as app title
+
+Middleware is a way to organize and reuse code, and, essentially, it is nothing more than a function with three parameters: request, response, and next. 
