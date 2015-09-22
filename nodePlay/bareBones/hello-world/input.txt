@@ -1,1 +1,1 @@
-Here is a block of text that will show up in blockingcode.js
+Here is a block of text that will show up in blockingcode.js and non-blockingcode.js
