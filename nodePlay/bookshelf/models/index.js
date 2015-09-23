@@ -10,10 +10,10 @@ var knex = require('knex')({
     }
 });
 
-var bookshelf = require('bookshelf')(knex);
-bookshelf.plugin('visibility');
+var Bookshelf = require('bookshelf')(knex);
+Bookshelf.plugin('visibility');
 
-var User = bookshelf.Model.extend({
+var User = Bookshelf.Model.extend({
   tableName: 'users',
   blogpost: function () {
     // one to many
@@ -22,7 +22,7 @@ var User = bookshelf.Model.extend({
 });
 exports.User = User;
 
-var Category = bookshelf.Model.extend({
+var Category = Bookshelf.Model.extend({
   tableName: 'categories',
   blogpost: function () {
     // one to many
@@ -31,7 +31,7 @@ var Category = bookshelf.Model.extend({
 });
 exports.Category = Category;
 
-var Blogpost = bookshelf.Model.extend({
+var Blogpost = Bookshelf.Model.extend({
   tableName: 'blogposts',
   category: function () {
     // one to one or many to one
@@ -52,7 +52,7 @@ var Blogpost = bookshelf.Model.extend({
 });
 exports.Blogpost = Blogpost;
 
-var Tag = bookshelf.Model.extend({
+var Tag = Bookshelf.Model.extend({
   tableName: 'tags',
   blogpost: function () {
     return this.belongsToMany(Blogpost, "posts_tags", "tag_id")
@@ -60,4 +60,4 @@ var Tag = bookshelf.Model.extend({
 });
 exports.Tag = Tag;
 
-exports.bookshelf = bookshelf;
+exports.Bookshelf = Bookshelf;
