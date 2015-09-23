@@ -82,10 +82,10 @@ function createTables () {
 
 
 createTables()
-.then(function() {
-  console.log('Tables created!!');
-  process.exit(0);
-})
-.otherwise(function (error) {
-  throw error;
-});
+  .then(function() {
+    console.log('Tables created!!');
+    process.exit(0);
+  })
+  .otherwise(function (error) {
+    throw error;
+  });

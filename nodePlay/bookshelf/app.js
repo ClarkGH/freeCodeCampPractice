@@ -11,6 +11,17 @@ var knex = require('knex')({
 });
 
 var Bookshelf = require('bookshelf')(knex);
+var _ = require('lodash');
+var express = require('express');
+var app = express();
+var bodyParser = require('body-parser')
+
+// application routing
+var router = express.Router();
+
+// body-parser middleware for handling request variables
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
 // MODELS
 
