@@ -8,8 +8,8 @@ module.exports = {
   tags: ['mysql', 'bookshelf', 'nodejs'],
 
   user: {
-    name: 'Que',
-    email: 'que@ragingflame.co.za'
+    name: 'Batman',
+    email: 'batman@batman.com'
   },
 
   categories: ['News', 'Tutorials', 'Interviews']
