@@ -8,10 +8,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
+    "async": "^1.4.2",
     "bluebird": "^2.10.1",
     "bookshelf": "^0.8.2",
     "knex": "^0.8.6",
     "lodash": "^3.10.1",
+    "moment": "^2.10.6",
     "mysql": "^2.9.0"
   },
   "author": "Clark Hinchcliff",
