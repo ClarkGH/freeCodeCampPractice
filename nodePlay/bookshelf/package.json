@@ -18,7 +18,8 @@
     "method-override": "^2.3.5",
     "moment": "^2.10.6",
     "multer": "^1.0.5",
-    "mysql": "^2.9.0"
+    "mysql": "^2.9.0",
+    "pg": "^4.4.2"
   },
   "author": "Clark Hinchcliff",
   "license": "MIT"
