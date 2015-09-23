@@ -32,7 +32,7 @@ var User = Bookshelf.Model.extend({
 
 // Post model
 var Post = Bookshelf.Model.extend({
-  tableName: 'posts'
+  tableName: 'posts',
 
   hasTimestamps: true,
 
@@ -433,5 +433,5 @@ router.route('/posts/tag/:slug')
 app.use('/api', router);
 
 app.listen(3000, function() {
-  console.log("✔ Express server listening on port %d in %s mode", 3002, app.get('env'));
+  console.log("✔ Express server listening on port %d in %s mode", 3000, app.get('env'));
 });
