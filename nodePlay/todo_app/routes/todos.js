@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 
+var Todo = require('./../app/models/todo.js');
+
 /* GET home page. */
 router.get('/todos', function(req, res, next) {
   new Todo()

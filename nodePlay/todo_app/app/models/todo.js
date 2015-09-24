@@ -6,4 +6,4 @@ var Todo = db.Model.extend({
   hasTimestamps: true,
 });
 
-module.exports = db.model('Todo', todo)
+module.exports = db.model('Todo', Todo)
