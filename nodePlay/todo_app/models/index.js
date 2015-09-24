@@ -10,3 +10,11 @@ var knex = require('knex')({
   }
 });
 
+var bookshelf = require("bookshelf")(knex);
+bookshelf.plugin('visibility');
+
+var Todo = bookshelf.Model.extend({
+  tableName: 'todos',
+  hasTimestamps: true
+});
+exports.Todo = Todo;
