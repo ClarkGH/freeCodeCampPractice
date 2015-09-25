@@ -4,7 +4,8 @@
   "description": "Making my way downtown",
   "main": "app.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "start": "supervisor app"
   },
   "author": "Clark Hinchcliff",
   "license": "MIT",

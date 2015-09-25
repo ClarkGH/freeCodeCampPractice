@@ -1,3 +1,5 @@
+var Todo = require('../models/todo.js');
+
 var knex = require('knex'){
   client: 'pg',
   connection: {
@@ -11,9 +13,8 @@ var knex = require('knex'){
 
 var Bookshelf = require('bookshelf')(knex);
 
-var Todo = Bookshelf.Model.extend({
-  tableName: 'todos'
-  hasTimestamps: true,
+var Todos = Bookshelf.Collection.extend({
+  model: Todo
 });
 
-module.exports = Todo;
+module.exports = Todos;
