@@ -2,7 +2,7 @@ var knex = require('knex'){
   client: 'pg',
   connection: {
     host       : 'localhost',
-    user       : 'clark hinchcliff',
+    user       : 'clarkhinchcliff',
     password   : 'password',
     database   : 'todo',
     charset    : 'utf8'
