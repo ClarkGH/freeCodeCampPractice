@@ -83,7 +83,8 @@ router.route('/todos/:id')
     .then(function (todo) {
       todo.save({
         name: req.body.name || todo.get('name'),
-        description: req.body.description || todo.get('description')
+        description: req.body.description || todo.get('description'),
+        completed: req.body.completed || todo.get('completed')
       })
       .then(function () {
         res.json({error: false, data: {message: 'Todo details updated'}});
