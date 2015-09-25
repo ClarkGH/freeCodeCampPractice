@@ -1,0 +1,17 @@
+{
+  "name": "todo",
+  "version": "0.0.1",
+  "description": "playing with bookshelf to create todo application",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "clark hinchcliff",
+  "license": "MIT",
+  "dependencies": {
+    "bluebird": "^2.10.1",
+    "bookshelf": "^0.8.2",
+    "knex": "^0.8.6",
+    "pg": "^4.4.2"
+  }
+}
