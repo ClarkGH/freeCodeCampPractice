@@ -1,0 +1,11 @@
+{
+  "name": "todo",
+  "version": "0.0.1",
+  "description": "Making my way downtown",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "author": "Clark Hinchcliff",
+  "license": "MIT"
+}
