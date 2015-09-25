@@ -1,6 +1,6 @@
 var Todo = require('../models/todo.js');
 
-var knex = require('knex'){
+var knex = require('knex')({
   client: 'pg',
   connection: {
     host       : 'localhost',
@@ -9,7 +9,7 @@ var knex = require('knex'){
     database   : 'todo',
     charset    : 'utf8'
   }
-}
+});
 
 var Bookshelf = require('bookshelf')(knex);
 

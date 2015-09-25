@@ -1,4 +1,4 @@
-var knex = require('knex'){
+var knex = require('knex')({
   client: 'pg',
   connection: {
     host       : 'localhost',
@@ -7,13 +7,13 @@ var knex = require('knex'){
     database   : 'todo',
     charset    : 'utf8'
   }
-}
+});
 
 var Bookshelf = require('bookshelf')(knex);
 
 var Todo = Bookshelf.Model.extend({
-  tableName: 'todos'
-  hasTimestamps: true,
+  tableName: 'todos',
+  hasTimestamps: true
 });
 
 module.exports = Todo;

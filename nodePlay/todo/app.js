@@ -1,4 +1,4 @@
-var knex = require('knex'){
+var knex = require('knex')({
   client: 'pg',
   connection: {
     host       : 'localhost',
@@ -7,7 +7,7 @@ var knex = require('knex'){
     database   : 'todo',
     charset    : 'utf8'
   }
-}
+});
 
 var Bookshelf = require('bookshelf')(knex);
 
@@ -17,10 +17,10 @@ var app = express();
 var bodyParser = require('body-parser');
 
 // Models
-var Todo = require('./models/todo.js')
+var Todo = require('./db//models/todo.js')
 
 // Collections
-var Todos = require('./collections/todos.js')
+var Todos = require('./db/collections/todos.js')
 
 // app routing
 var router = express.Router();
@@ -31,7 +31,7 @@ app.use(bodyParser.json());
 
 //routing
 router.route('/todos')
-  // fetch all users
+  // fetch all todos
   .get(function (req, res) {
     Todos.forge()
     .fetch()
@@ -43,20 +43,20 @@ router.route('/todos')
     });
   })
 
-//   // create a user
-//   .post(function (req, res) {
-//     User.forge({
-//       name: req.body.name,
-//       email: req.body.email
-//     })
-//     .save()
-//     .then(function (user) {
-//       res.json({error: false, data: {id: user.get('id')}});
-//     })
-//     .otherwise(function (err) {
-//       res.status(500).json({error: true, data: {message: err.message}});
-//     }); 
-//   });
+  // create a todo
+  // .post(function (req, res) {
+  //   Todo.forge({
+  //     name: req.body.name,
+  //     email: req.body.email
+  //   })
+  //   .save()
+  //   .then(function (user) {
+  //     res.json({error: false, data: {id: user.get('id')}});
+  //   })
+  //   .otherwise(function (err) {
+  //     res.status(500).json({error: true, data: {message: err.message}});
+  //   }); 
+  // });
 
 // router.route('/users/:id')
 //   // fetch user
@@ -114,3 +114,4 @@ router.route('/todos')
 //       res.status(500).json({error: true, data: {message: err.message}});
 //     });
 //   });
+
