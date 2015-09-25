@@ -46,10 +46,8 @@ router.route('/todos')
   // create a todo
   .post(function (req, res) {
     Todo.forge({
-      name: 'steve',
-      // name: req.body.name,
-      description: 'steve, stop kicking children'
-      // description: req.body.description,
+      name: req.body.name,
+      description: req.body.description,
     })
     .save()
     .then(function (user) {
@@ -60,23 +58,23 @@ router.route('/todos')
     }); 
   });
 
-// router.route('/users/:id')
-//   // fetch user
-//   .get(function (req, res) {
-//     User.forge({id: req.params.id})
-//     .fetch()
-//     .then(function (user) {
-//       if (!user) {
-//         res.status(404).json({error: true, data: {}});
-//       }
-//       else {
-//         res.json({error: false, data: user.toJSON()});
-//       }
-//     })
-//     .otherwise(function (err) {
-//       res.status(500).json({error: true, data: {message: err.message}});
-//     });
-//   })
+router.route('/todos/:id')
+  // fetch user
+  .get(function (req, res) {
+    Todo.forge({id: req.params.id})
+    .fetch()
+    .then(function (todo) {
+      if (!todo) {
+        res.status(404).json({error: true, data: {}});
+      }
+      else {
+        res.json({error: false, data: todo.toJSON()});
+      }
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
+  })
 
 //   // update user details
 //   .put(function (req, res) {
