@@ -1,3 +1,16 @@
+var knex = require('knex'){
+  client: 'pg',
+  connection: {
+    host       : 'localhost',
+    user       : 'clark hinchcliff',
+    password   : 'password',
+    database   : 'todo',
+    charset    : 'utf8'
+  }
+}
+
+var Bookshelf = require('bookshelf')(knex);
+
 var _ = require('lodash');
 var express = require('express');
 var app = express();
