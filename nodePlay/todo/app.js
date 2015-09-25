@@ -50,8 +50,8 @@ router.route('/todos')
       description: req.body.description,
     })
     .save()
-    .then(function (user) {
-      res.json({error: false, data: {id: user.get('id')}});
+    .then(function (todo) {
+      res.json({error: false, data: {id: todo.get('id')}});
     })
     .catch(function (err) {
       res.status(500).json({error: true, data: {message: err.message}});
@@ -77,43 +77,43 @@ router.route('/todos/:id')
   })
 
 //   // update user details
-//   .put(function (req, res) {
-//     User.forge({id: req.params.id})
-//     .fetch({require: true})
-//     .then(function (user) {
-//       user.save({
-//         name: req.body.name || user.get('name'),
-//         email: req.body.email || user.get('email')
-//       })
-//       .then(function () {
-//         res.json({error: false, data: {message: 'User details updated'}});
-//       })
-//       .otherwise(function (err) {
-//         res.status(500).json({error: true, data: {message: err.message}});
-//       });
-//     })
-//     .otherwise(function (err) {
-//       res.status(500).json({error: true, data: {message: err.message}});
-//     });
-//   })
+  .put(function (req, res) {
+    Todo.forge({id: req.params.id})
+    .fetch({require: true})
+    .then(function (todo) {
+      todo.save({
+        name: req.body.name || todo.get('name'),
+        description: req.body.description || todo.get('description')
+      })
+      .then(function () {
+        res.json({error: false, data: {message: 'Todo details updated'}});
+      })
+      .catch(function (err) {
+        res.status(500).json({error: true, data: {message: err.message}});
+      });
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
+  })
 
-//   // delete a user
-//   .delete(function (req, res) {
-//     User.forge({id: req.params.id})
-//     .fetch({require: true})
-//     .then(function (user) {
-//       user.destroy()
-//       .then(function () {
-//         res.json({error: true, data: {message: 'User successfully deleted'}});
-//       })
-//       .otherwise(function (err) {
-//         res.status(500).json({error: true, data: {message: err.message}});
-//       });
-//     })
-//     .otherwise(function (err) {
-//       res.status(500).json({error: true, data: {message: err.message}});
-//     });
-//   });
+  // delete a todo
+  .delete(function (req, res) {
+    Todo.forge({id: req.params.id})
+    .fetch({require: true})
+    .then(function (todo) {
+      todo.destroy()
+      .then(function () {
+        res.json({error: true, data: {message: 'Todo successfully deleted'}});
+      })
+      .otherwise(function (err) {
+        res.status(500).json({error: true, data: {message: err.message}});
+      });
+    })
+    .otherwise(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    });
+  });
 
 app.use('/', router);
 app.listen(3000, function() {
