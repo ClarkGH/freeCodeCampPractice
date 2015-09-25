@@ -38,25 +38,27 @@ router.route('/todos')
     .then(function (collection) {
       res.json({error: false, data: collection.toJSON()});
     })
-    .otherwise(function (err) {
+    .catch(function (err) {
       res.status(500).json({error: true, data: {message: err.message}});
     });
   })
 
   // create a todo
-  // .post(function (req, res) {
-  //   Todo.forge({
-  //     name: req.body.name,
-  //     email: req.body.email
-  //   })
-  //   .save()
-  //   .then(function (user) {
-  //     res.json({error: false, data: {id: user.get('id')}});
-  //   })
-  //   .otherwise(function (err) {
-  //     res.status(500).json({error: true, data: {message: err.message}});
-  //   }); 
-  // });
+  .post(function (req, res) {
+    Todo.forge({
+      name: 'steve',
+      // name: req.body.name,
+      description: 'steve, stop kicking children'
+      // description: req.body.description,
+    })
+    .save()
+    .then(function (user) {
+      res.json({error: false, data: {id: user.get('id')}});
+    })
+    .catch(function (err) {
+      res.status(500).json({error: true, data: {message: err.message}});
+    }); 
+  });
 
 // router.route('/users/:id')
 //   // fetch user
