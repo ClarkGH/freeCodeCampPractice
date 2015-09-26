@@ -76,7 +76,7 @@ router.route('/todos/:id')
     });
   })
 
-//   // update user details
+  // update user details
   .put(function (req, res) {
     Todo.forge({id: req.params.id})
     .fetch({require: true})
