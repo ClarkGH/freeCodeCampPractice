@@ -11,6 +11,7 @@ var knex = require('knex')({
 
 var Bookshelf = require('bookshelf')(knex);
 
+var path = require('path');
 var _ = require('lodash');
 var express = require('express');
 var app = express();
@@ -22,8 +23,16 @@ var Todo = require('./db//models/todo.js')
 // Collections
 var Todos = require('./db/collections/todos.js')
 
+// Controller
+var todosController = require('./controller/todos');
+
 // app routing
 var router = express.Router();
+var index = require('./routes/index.js')
+
+// view engine setup
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'jade');
 
 // body-parser middleware that handles all the req. variables
 app.use(bodyParser.urlencoded({extended: true}));
@@ -76,7 +85,7 @@ router.route('/todos/:id')
     });
   })
 
-//   // update user details
+  // update user details
   .put(function (req, res) {
     Todo.forge({id: req.params.id})
     .fetch({require: true})
@@ -116,7 +125,12 @@ router.route('/todos/:id')
     });
   });
 
-app.use('/', router);
+// app.use('/', index);
+app.get('/', todosController.getTodos);
+
+//api requests
+app.use('/api', router);
+
 app.listen(3000, function() {
   console.log("Server is running on localhost:3000")
 })
