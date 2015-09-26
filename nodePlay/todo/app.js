@@ -23,6 +23,9 @@ var Todo = require('./db//models/todo.js')
 // Collections
 var Todos = require('./db/collections/todos.js')
 
+// Controller
+var todosController = require('./controller/todos');
+
 // app routing
 var router = express.Router();
 var index = require('./routes/index.js')
@@ -121,8 +124,13 @@ router.route('/todos/:id')
       res.status(500).json({error: true, data: {message: err.message}});
     });
   });
-app.use('/', index);
+
+// app.use('/', index);
+app.get('/', todosController.getTodos);
+
+//api requests
 app.use('/api', router);
+
 app.listen(3000, function() {
   console.log("Server is running on localhost:3000")
 })
