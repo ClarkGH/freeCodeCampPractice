@@ -1,0 +1,8 @@
+extends layout
+
+block content
+  ol Owners
+    each val in owners
+      p
+      li Name: #{val.name}
+      | Smells: #{val.smells}

@@ -1,9 +1,0 @@
-extends layout
-
-block content
-  p List all todos here
-  ol 
-    each val in todos
-      li Name: #{val.name}
-      |  Description: #{val.description}
-      |  Completed?: #{val.completed}
