@@ -25,7 +25,6 @@ app.get('/', function (req, res, next) {
   var owners = Owners;
   owners.fetch()
   .then( function (owners) {
-    console.log(owners.toJSON())
     res.render('index', {
       title: 'Owners of turtles',
       owners: owners.toJSON()
@@ -47,7 +46,6 @@ app.get('/:id', function (req, res) {
     withRelated: ['turtles']
   })
   .then(function (data) {
-    console.log(data.toJSON());
     var owner = data.toJSON();
     res.render('owner', {
       title: owner.name,
