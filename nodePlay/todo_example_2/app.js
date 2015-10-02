@@ -74,7 +74,7 @@ app.route('/:id')
     .then(function (data) {
       var owner = data.toJSON();
       res.render('owner', {
-        title: owner.name,
+        title: owner.name + '\'s turtle(s)',
         owner: owner
       })
     })
@@ -98,7 +98,7 @@ app.route('/:id')
       })
       .then(function () {
         req.method = 'get';
-        res.redirect('/');
+        res.redirect('/' + owner.id);
       })
       .catch(function (error) {
         console.error(error.stack);
