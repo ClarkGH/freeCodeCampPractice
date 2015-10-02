@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  ol #{owner.name}'s Turtles
+    each val, index in owner.turtles
+      li #{val.name}
+      if val.canDance
+        |It can dance
+      else
+        |It cannot dance

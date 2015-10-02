@@ -24,18 +24,40 @@ app.set('view engine', 'jade');
 app.get('/', function (req, res, next) {
   var owners = Owners;
   owners.fetch()
-  .then( function (data ) {
-    console.log(data.toJSON())
+  .then( function (owners) {
     res.render('index', {
       title: 'Owners of turtles',
-      owners: data.toJSON()
+      owners: owners.toJSON()
     });    
   })
   .catch(function (error) {
     console.error(error.stack);
-    req.flash('errors', {'msg': error.message});
-    res.redirect('/');
+    res.render('error', {
+      error: error
+    })
   });
+});
+
+//get specific owner route
+app.get('/:id', function (req, res) {
+  var id = req.params.id;
+  Owner.forge({id: id})
+  .fetch({
+    withRelated: ['turtles']
+  })
+  .then(function (data) {
+    var owner = data.toJSON();
+    res.render('owner', {
+      title: owner.name,
+      owner: owner
+    })
+  })
+  .catch(function (error) {
+    console.error(error.stack);
+    res.render('error', {
+      error: error
+    })
+  })
 });
 
 app.listen(3000);
