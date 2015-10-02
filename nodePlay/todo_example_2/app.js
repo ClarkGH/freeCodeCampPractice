@@ -63,27 +63,51 @@ app.route('/')
     })
   });
 
-//get specific owner and his turtles
-app.get('/:id', function (req, res) {
-  var id = req.params.id;
-  Owner.forge({id: id})
-  .fetch({
-    withRelated: ['turtles']
-  })
-  .then(function (data) {
-    var owner = data.toJSON();
-    res.render('owner', {
-      title: owner.name,
-      owner: owner
+app.route('/:id') 
+  //get specific owner and his turtles
+  .get(function (req, res) {
+    var id = req.params.id;
+    Owner.forge({id: id})
+    .fetch({
+      withRelated: ['turtles']
+    })
+    .then(function (data) {
+      var owner = data.toJSON();
+      res.render('owner', {
+        title: owner.name,
+        owner: owner
+      })
+    })
+    .catch(function (error) {
+      console.error(error.stack);
+      res.render('error', {
+        error: error
+      })
     })
   })
-  .catch(function (error) {
-    console.error(error.stack);
-    res.render('error', {
-      error: error
+  //delete specific owner and his turtles
+  .delete(function (req, res) {
+    var id = req.params.id;
+    Owner.forge({id: id})
+    .fetch({
+      withRelated: ['turtles']
+    })
+    .then(function (owner) {
+      return owner.related('turtles')
+      .invokeThen('destroy')
+      .then(function () {
+        return owner.destroy().then(function () {
+          console.log('Successfully deleted ' + owner.name);
+        })
+      })
+    })
+    .catch(function (error) {
+      console.error(error.stack);
+      res.render('error', {
+        error: error
+      })
     })
   })
-});
 
 app.listen(3000);
 
