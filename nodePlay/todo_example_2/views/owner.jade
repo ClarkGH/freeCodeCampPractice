@@ -1,12 +1,14 @@
 extends layout
 
 block content
-  ol #{owner.name}'s Turtles
+  ol #{owner.name}'s, who has #{owner.arms} arm(s), Turtles
     each val, index in owner.turtles
       li #{val.name}
+      //- TODO, be able to click on a turtle as a link
       if val.canDance
         |It can dance
       else
         |It cannot dance
-      form(method='POST', action='/#{val.id}?_method=DELETE')
-        button(type='submit') Delete
+      //- TODO, delete turtles button here
+  form(action='/update/#{owner.id}', method='POST')
+    button(type='submit').

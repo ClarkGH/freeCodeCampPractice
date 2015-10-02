@@ -84,25 +84,24 @@ app.route('/:id')
         error: error
       })
     })
-  });
-
-app.route('/delete/:id')
-  //delete specific owner and his turtles
+  })
+  // update owner details
   .post(function (req, res) {
-    var id = req.params.id;
-    Owner.forge({id: id})
-    .fetch({
-      withRelated: ['turtles']
-    })
+    Owner.forge({id: req.params.id})
+    .fetch({require: true})
     .then(function (owner) {
-      var deletedOwner = owner.toJSON();
-      owner.related('turtles')
-      .invokeThen('destroy')
+      owner.save({
+        name: req.body.name || owner.get('name'),
+        arms: req.body.arms || owner.get('arms'),
+        smells: req.body.smells || owner.get('smells')
+      })
       .then(function () {
-        owner.destroy().then(function () {
-          console.log('Successfully deleted owner ' + deletedOwner.name + ' and all of his filthy turtles from our glorious database');
-          req.method = 'get';
-          res.redirect('/');
+        res.json({error: false, data: {message: 'User details updated'}});
+      })
+      .catch(function (error) {
+        console.error(error.stack);
+        res.render('error', {
+          error: error
         })
       })
     })
@@ -113,6 +112,34 @@ app.route('/delete/:id')
       })
     })
   })
+
+
+  //delete specific owner and his turtles
+app.post('/delete/:id', function (req, res) {
+  var id = req.params.id;
+  Owner.forge({id: id})
+  .fetch({
+    withRelated: ['turtles']
+  })
+  .then(function (owner) {
+    var deletedOwner = owner.toJSON();
+    owner.related('turtles')
+    .invokeThen('destroy')
+    .then(function () {
+      owner.destroy().then(function () {
+        console.log('Successfully deleted owner ' + deletedOwner.name + ' and all of his filthy turtles from our glorious database');
+        req.method = 'get';
+        res.redirect('/');
+      })
+    })
+  })
+  .catch(function (error) {
+    console.error(error.stack);
+    res.render('error', {
+      error: error
+    })
+  })
+})
 
 app.listen(3000);
 

@@ -7,11 +7,11 @@ block content
       p
       li Name: #[a(href='/#{val.id}') #{val.name}]
       | Smells: #{val.smells}
-      form(action='delete/#{val.id}',method='post')
+      form(action='/delete/#{val.id}',method='POST')
         button(type='submit').
           Delete
   h1 New Owner?
-  form(name="add-estimation", method="post")
+  form(name="add-owner", method="POST")
       div.input
           span.label Name
           input(type="text", name="name")
