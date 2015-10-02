@@ -24,11 +24,11 @@ app.set('view engine', 'jade');
 app.get('/', function (req, res, next) {
   var owners = Owners;
   owners.fetch()
-  .then( function (data) {
-    console.log(data.toJSON())
+  .then( function (owners) {
+    console.log(owners.toJSON())
     res.render('index', {
       title: 'Owners of turtles',
-      owners: data.toJSON()
+      owners: owners.toJSON()
     });    
   })
   .catch(function (error) {
@@ -44,8 +44,12 @@ app.get('/:id', function (req, res) {
   .fetch({
     withRelated: ['turtles']
   })
-  .then(function (data) {
-    res.send(data.toJSON())
+  .then(function (owner) {
+    console.log(owner)
+    res.render('owner', {
+      title: owner.name,
+      name: owner.toJSON()
+    })
   })
   .catch(function (error) {
     console.error(error.stack);
