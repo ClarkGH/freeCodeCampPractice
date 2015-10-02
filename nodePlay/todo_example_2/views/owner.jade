@@ -1,4 +1,10 @@
 extends layout
 
 block content
-  ol going to list owner and turtles here
+  ol #{owner.name}'s Turtles
+    each val, index in owner.turtles
+      li #{val.name}
+      if val.canDance
+        |It can dance
+      else
+        |It cannot dance

@@ -33,7 +33,9 @@ app.get('/', function (req, res, next) {
   })
   .catch(function (error) {
     console.error(error.stack);
-    // TODO: redirect to error page
+    res.render('error', {
+      error: error
+    })
   });
 });
 
@@ -44,16 +46,19 @@ app.get('/:id', function (req, res) {
   .fetch({
     withRelated: ['turtles']
   })
-  .then(function (owner) {
-    console.log(owner)
+  .then(function (data) {
+    console.log(data.toJSON());
+    var owner = data.toJSON();
     res.render('owner', {
       title: owner.name,
-      name: owner.toJSON()
+      owner: owner
     })
   })
   .catch(function (error) {
     console.error(error.stack);
-    // TODO: redirect to error page
+    res.render('error', {
+      error: error
+    })
   })
 });
 
