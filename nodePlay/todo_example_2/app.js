@@ -20,25 +20,34 @@ var Owners = require('./collections/owners'),
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-//get all owners route
-app.get('/', function (req, res, next) {
-  var owners = Owners;
-  owners.fetch()
-  .then( function (owners) {
-    res.render('index', {
-      title: 'Owners of turtles',
-      owners: owners.toJSON()
-    });    
-  })
-  .catch(function (error) {
-    console.error(error.stack);
-    res.render('error', {
-      error: error
+// Use bodyParser
+app.use(bodyParser.urlencoded({ extended: false }))
+
+
+app.route('/') 
+  // get all owners
+  .get(function (req, res, next) {
+    var owners = Owners;
+    owners.fetch()
+    .then( function (owners) {
+      res.render('index', {
+        title: 'Owners of turtles',
+        owners: owners.toJSON()
+      });    
     })
-  });
+    .catch(function (error) {
+      console.error(error.stack);
+      res.render('error', {
+        error: error
+      })
+    });
+  })
+  // create a new owner
+  .post(function (req, res) {
+    console.log(req.body);
 });
 
-//get specific owner route
+//get specific owner and his turtles
 app.get('/:id', function (req, res) {
   var id = req.params.id;
   Owner.forge({id: id})

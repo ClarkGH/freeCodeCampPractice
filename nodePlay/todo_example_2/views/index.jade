@@ -1,8 +1,22 @@
 extends layout
 
 block content
-  ol Owners
+  h1 Owners
+  ol
     each val in owners
       p
       li Name: #{val.name}
       | Smells: #{val.smells}
+  h1 New Owner?
+  form(name="add-estimation", method="post")
+      div.input
+          span.label Name
+          input(type="text", name="name")
+      div.input
+          span.label Number of Arms?
+          input(type="text", name="arms")
+      div.input
+          span.label How do they smell?
+          input(type="text", name="description")
+      div.actions
+          input(type="submit", value="add")
