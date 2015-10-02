@@ -24,7 +24,7 @@ app.set('view engine', 'jade');
 app.get('/', function (req, res, next) {
   var owners = Owners;
   owners.fetch()
-  .then( function (data ) {
+  .then( function (data) {
     console.log(data.toJSON())
     res.render('index', {
       title: 'Owners of turtles',
@@ -33,9 +33,24 @@ app.get('/', function (req, res, next) {
   })
   .catch(function (error) {
     console.error(error.stack);
-    req.flash('errors', {'msg': error.message});
-    res.redirect('/');
+    // TODO: redirect to error page
   });
+});
+
+//get specific owner route
+app.get('/:id' function (req, res) {
+  var id = req.params.id;
+  Owner.forge({id: id})
+  .fetch({
+    withRelated: ['turtles']
+  })
+  .then(function (data) {
+    res.send(data.toJSON())
+  })
+  .catch(function (error) {
+    console.error(error.stack);
+    // TODO: redirect to error page
+  })
 });
 
 app.listen(3000);
