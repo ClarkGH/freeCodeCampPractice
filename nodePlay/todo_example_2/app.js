@@ -38,7 +38,7 @@ app.get('/', function (req, res, next) {
 });
 
 //get specific owner route
-app.get('/:id' function (req, res) {
+app.get('/:id', function (req, res) {
   var id = req.params.id;
   Owner.forge({id: id})
   .fetch({
