@@ -45,7 +45,23 @@ app.route('/')
   // create a new owner
   .post(function (req, res) {
     console.log(req.body);
-});
+    Owner.forge({
+      name: req.body.name,
+      smells: req.body.smells,
+      arms: parseInt(req.body.arms)
+    })
+    .save()
+    .then(function (owner) {
+      req.method = 'get';
+      res.redirect('/');
+    })
+    .catch(function (error) {
+      console.error(error.stack);
+      res.render('error', {
+        error: error
+      })
+    })
+  });
 
 //get specific owner and his turtles
 app.get('/:id', function (req, res) {
