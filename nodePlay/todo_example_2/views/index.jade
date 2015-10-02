@@ -5,7 +5,7 @@ block content
   ol
     each val in owners
       p
-      li Name: #{val.name}
+      li Name: #[a(href='/#{val.id}') #{val.name}]
       | Smells: #{val.smells}
   h1 New Owner?
   form(name="add-estimation", method="post")
