@@ -1,7 +1,8 @@
 extends layout
 
 block content
-  ol The turtles of #{owner.name}, who has #{owner.arms} arm(s).
+  h1 The turtles of #{owner.name}, who has #{owner.arms} arm(s).
+  ol
     each val, index in owner.turtles
       li #{val.name}
       //- TODO, be able to click on a turtle as a link
@@ -10,6 +11,7 @@ block content
       else
         |It cannot dance
       //- TODO, delete turtles button here
+  h2 Update #{owner.name}?
   form(name="add-owner", method="POST")
     div.input
         span.label Name

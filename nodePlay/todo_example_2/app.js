@@ -85,6 +85,7 @@ app.route('/:id')
       })
     })
   })
+
   // update owner details
   .post(function (req, res) {
     Owner.forge({id: req.params.id})
@@ -96,7 +97,8 @@ app.route('/:id')
         smells: req.body.smells || owner.get('smells')
       })
       .then(function () {
-        res.json({error: false, data: {message: 'User details updated'}});
+        req.method = 'get';
+        res.redirect('/');
       })
       .catch(function (error) {
         console.error(error.stack);
@@ -111,10 +113,10 @@ app.route('/:id')
         error: error
       })
     })
-  })
+  });
 
 
-  //delete specific owner and his turtles
+  //delete specific owner and all of his turtles
 app.post('/delete/:id', function (req, res) {
   var id = req.params.id;
   Owner.forge({id: id})
