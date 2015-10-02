@@ -8,3 +8,5 @@ block content
         |It can dance
       else
         |It cannot dance
+      form(method='POST', action='/#{val.id}?_method=DELETE')
+        button(type='submit') Delete

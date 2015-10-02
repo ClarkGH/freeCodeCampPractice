@@ -84,20 +84,25 @@ app.route('/:id')
         error: error
       })
     })
-  })
+  });
+
+app.route('/delete/:id')
   //delete specific owner and his turtles
-  .delete(function (req, res) {
+  .post(function (req, res) {
     var id = req.params.id;
     Owner.forge({id: id})
     .fetch({
       withRelated: ['turtles']
     })
     .then(function (owner) {
-      return owner.related('turtles')
+      var deletedOwner = owner.toJSON();
+      owner.related('turtles')
       .invokeThen('destroy')
       .then(function () {
-        return owner.destroy().then(function () {
-          console.log('Successfully deleted ' + owner.name);
+        owner.destroy().then(function () {
+          console.log('Successfully deleted owner ' + deletedOwner.name + ' and all of his filthy turtles from our glorious database');
+          req.method = 'get';
+          res.redirect('/');
         })
       })
     })
