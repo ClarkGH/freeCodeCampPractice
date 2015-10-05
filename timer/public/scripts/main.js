@@ -5,6 +5,9 @@ $( document ).ready(
     var second = 00;
     var secondKnob = $('.knob.second');
     var minuteKnob = $('.knob.minute');
+    
+    secondKnob.val(59);
+    minuteKnob.val(60);
 
     function updateClock () {
       $('#minute').text(minute);
@@ -76,12 +79,16 @@ $( document ).ready(
     secondKnob.knob({
                       'min':0,
                       'max':59,
-                      'readOnly': true
+                      'readOnly': true,
+                      'height': 300,
+                      'width': 300
                     });
     minuteKnob.knob({
                       'min':0,
                       'max':60,
-                      'readOnly': true
+                      'readOnly': true,
+                      'height': 150,
+                      'width': 150
                     });
   }
 );
