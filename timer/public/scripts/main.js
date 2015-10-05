@@ -1,19 +1,24 @@
 $( document ).ready(
-  function(){
-    var counter
-    var minute = 25;
+  function () {
+    var counter;
+    var minute = 30;
     var second = 00;
+    var secondKnob = $('.knob.second');
+    var minuteKnob = $('.knob.minute');
 
-    function updateClock() {
+    function updateClock () {
       $('#minute').text(minute);
+      minuteKnob.val(minute).trigger('change');
       if (second == 00 ) {
         $('#second').text("00");
+        secondKnob.val(0).trigger('change');
       } else {
         $('#second').text(second);
+        secondKnob.val(second).trigger('change');
       }
     }
 
-    function addMinute() {
+    function addMinute () {
       if (minute < 60) {
         minute += 1
       } else {
@@ -22,7 +27,7 @@ $( document ).ready(
       second = 00;
       updateClock();
     }
-    function takeMinute() {
+    function takeMinute () {
       if (minute > 0) {
         minute -= 1
       } else {
@@ -32,7 +37,7 @@ $( document ).ready(
       updateClock();
     }
 
-    function timer() {
+    function timer () {
       if (minute == 0 && second == 0) {
         clearInterval(counter);
         alert('Time is up.');
@@ -51,23 +56,32 @@ $( document ).ready(
       }
     }
 
-    function stopTimer() {
+    function stopTimer () {
       clearInterval(counter);
     }
 
-    function resetTimer() {
+    function resetTimer () {
       second = 00;
-      minute = 25;
+      minute = 30;
       updateClock();
     }
 
-    $('#start').on('click', function(){
+    $('#start').on('click', function () {
       counter = setInterval(timer,1000);
     });
     $('#addMinute').on('click', addMinute);
     $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
-
+    secondKnob.knob({
+                      'min':0,
+                      'max':59,
+                      'readOnly': true
+                    });
+    minuteKnob.knob({
+                      'min':0,
+                      'max':60,
+                      'readOnly': true
+                    });
   }
 );
