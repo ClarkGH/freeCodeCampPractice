@@ -1,0 +1,17 @@
+doctype html
+html
+  head
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js')
+    script(src='/scripts/main.js', type='text/javascript')
+    link(rel='stylesheet', type='text/css', href='styles/style.css')
+    title Terrible Timer
+  body
+    .timer
+      p#minute 25
+      p :
+      p#second 00
+    button#start Start
+    button#addMinute More Time
+    button#takeMinute Less Time
+    button#stop Stop
+    button#reset Reset
