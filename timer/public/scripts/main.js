@@ -1,10 +1,10 @@
 $( document ).ready(
-  function(){
-    var counter
+  function () {
+    var counter;
     var minute = 25;
     var second = 00;
 
-    function updateClock() {
+    function updateClock () {
       $('#minute').text(minute);
       if (second == 00 ) {
         $('#second').text("00");
@@ -13,7 +13,7 @@ $( document ).ready(
       }
     }
 
-    function addMinute() {
+    function addMinute () {
       if (minute < 60) {
         minute += 1
       } else {
@@ -22,7 +22,7 @@ $( document ).ready(
       second = 00;
       updateClock();
     }
-    function takeMinute() {
+    function takeMinute () {
       if (minute > 0) {
         minute -= 1
       } else {
@@ -32,7 +32,7 @@ $( document ).ready(
       updateClock();
     }
 
-    function timer() {
+    function timer () {
       if (minute == 0 && second == 0) {
         clearInterval(counter);
         alert('Time is up.');
@@ -51,17 +51,17 @@ $( document ).ready(
       }
     }
 
-    function stopTimer() {
+    function stopTimer () {
       clearInterval(counter);
     }
 
-    function resetTimer() {
+    function resetTimer () {
       second = 00;
       minute = 25;
       updateClock();
     }
 
-    $('#start').on('click', function(){
+    $('#start').on('click', function () {
       counter = setInterval(timer,1000);
     });
     $('#addMinute').on('click', addMinute);
