@@ -68,6 +68,9 @@ $( document ).ready(
     $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
-
+    $(".knob.second").knob({
+                      'min':0,
+                      'max':60
+                    });
   }
 );
