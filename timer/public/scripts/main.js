@@ -1,23 +1,28 @@
 $( document ).ready(
   function () {
     var counter;
-    var minute = 25;
+    var minute = 30;
     var second = 00;
+    var secondKnob = $('.knob.second');
+    var minuteKnob = $('.knob.minute');
 
     function updateClock () {
       $('#minute').text(minute);
+      minuteKnob.val(minute);
       if (second == 00 ) {
         $('#second').text("00");
+        secondKnob.val(0);
       } else {
         $('#second').text(second);
+        secondKnob.val(second);
       }
     }
 
     function addMinute () {
-      if (minute < 60) {
+      if (minute < 120) {
         minute += 1
       } else {
-        alert("The maximum amount of time you can set is 60 minutes");
+        alert("The maximum amount of time you can set is 120 minutes");
       }
       second = 00;
       updateClock();
@@ -57,7 +62,7 @@ $( document ).ready(
 
     function resetTimer () {
       second = 00;
-      minute = 25;
+      minute = 30;
       updateClock();
     }
 
@@ -68,9 +73,15 @@ $( document ).ready(
     $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
-    $(".knob.second").knob({
+    secondKnob.knob({
                       'min':0,
-                      'max':60
+                      'max':59,
+                      'readOnly': true
+                    });
+    minuteKnob.knob({
+                      'min':0,
+                      'max':120,
+                      'readOnly': true
                     });
   }
 );
