@@ -8,21 +8,21 @@ $( document ).ready(
 
     function updateClock () {
       $('#minute').text(minute);
-      minuteKnob.val(minute);
+      minuteKnob.val(minute).trigger('change');
       if (second == 00 ) {
         $('#second').text("00");
-        secondKnob.val(0);
+        secondKnob.val(0).trigger('change');
       } else {
         $('#second').text(second);
-        secondKnob.val(second);
+        secondKnob.val(second).trigger('change');
       }
     }
 
     function addMinute () {
-      if (minute < 120) {
+      if (minute < 60) {
         minute += 1
       } else {
-        alert("The maximum amount of time you can set is 120 minutes");
+        alert("The maximum amount of time you can set is 60 minutes");
       }
       second = 00;
       updateClock();
@@ -80,7 +80,7 @@ $( document ).ready(
                     });
     minuteKnob.knob({
                       'min':0,
-                      'max':120,
+                      'max':60,
                       'readOnly': true
                     });
   }
