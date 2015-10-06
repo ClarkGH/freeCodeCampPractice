@@ -1,15 +1,3 @@
 p {
   display: inline;
 }
-
-.knob {
-  display: inline-block;
-}
-
-.second {
-  position:absolute;
-}
-
-.minute {
-  position: absolute;
-}
