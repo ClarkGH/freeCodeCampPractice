@@ -3,8 +3,8 @@ $( document ).ready(
     var counter;
     var minute = 30;
     var second = 00;
-    var secondKnob = $('.knob.second');
-    var minuteKnob = $('.knob.minute');
+    var secondKnob = $('.second');
+    var minuteKnob = $('.minute');
     
     secondKnob.val(59);
     minuteKnob.val(60);
@@ -76,7 +76,6 @@ $( document ).ready(
     $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
-    $('.knob').knob();
     secondKnob.knob({
                       'min':0,
                       'max':59,
