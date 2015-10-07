@@ -10,14 +10,12 @@ p {
 
 .secondBox {
   position: absolute;
-  left: 60px;
-  top: 60px
+  margin: 5em 5em 5em 1.5em;
 }
 
 .minuteBox {
   position: absolute;
-  left: 110px;
-  top: 110px;
+  margin: 9.7em 0em 0em 6.2em;
 }
 
 /*p × Superpose (clock)
