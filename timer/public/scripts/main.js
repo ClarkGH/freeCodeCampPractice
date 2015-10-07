@@ -62,6 +62,7 @@ $( document ).ready(
     }
 
     function resetTimer () {
+      stopTimer();
       second = 00;
       minute = 30;
       updateClock();
