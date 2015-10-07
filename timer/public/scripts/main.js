@@ -6,7 +6,7 @@ $( document ).ready(
     var secondKnob = $('.knob.second');
     var minuteKnob = $('.knob.minute');
     
-    secondKnob.val(59);
+    secondKnob.val(0);
     minuteKnob.val(60);
 
     function updateClock () {
@@ -69,6 +69,9 @@ $( document ).ready(
     }
 
     $('#start').on('click', function () {
+      if (counter) {
+        stopTimer();
+      }
       counter = setInterval(timer,1000);
     });
     $('#addMinute').on('click', addMinute);
