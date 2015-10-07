@@ -2,22 +2,22 @@ p {
   display: inline;
 }
 
-.knob {
+.knobBox {
   position: relative;
   width: 350px;
   margin: auto;
 }
 
-.second {
+.secondBox {
   position: absolute;
-  left:10px;
-  top:10px;
+  left: 60px;
+  top: 60px
 }
 
-.minute {
-  position:absolute;
-  left:60px;
-  top:60px;
+.minuteBox {
+  position: absolute;
+  left: 110px;
+  top: 110px;
 }
 
 /*p × Superpose (clock)
