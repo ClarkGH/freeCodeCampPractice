@@ -3,8 +3,8 @@ $( document ).ready(
     var counter;
     var minute = 30;
     var second = 00;
-    var secondKnob = $('.second');
-    var minuteKnob = $('.minute');
+    var secondKnob = $('.knob.second');
+    var minuteKnob = $('.knob.minute');
     
     secondKnob.val(59);
     minuteKnob.val(60);
