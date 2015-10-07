@@ -1,3 +1,7 @@
+body {
+  background-color: black;
+}
+
 p {
   display: inline;
 }
@@ -22,6 +26,16 @@ p {
   position: absolute;
   margin: 14em 0em 0em 10.3em;
   text-align: center;
+}
+
+.circle {
+  position: absolute;
+  margin: 11.6em 0em 0em 8.1em;
+  border-radius: 50%;
+  width: 5.5em;
+  height: 5.5em; 
+  background-color: yellow;
+}
 }
 /*p × Superpose (clock)
     div(style='position:relative;width:350px;margin:auto')
