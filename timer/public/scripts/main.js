@@ -13,10 +13,8 @@ $( document ).ready(
       $('#minute').text(minute);
       minuteKnob.val(minute).trigger('change');
       if (second == 00 ) {
-        $('#second').text("00");
         secondKnob.val(0).trigger('change');
       } else {
-        $('#second').text(second);
         secondKnob.val(second).trigger('change');
       }
     }
