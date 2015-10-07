@@ -18,6 +18,11 @@ p {
   margin: 9.7em 0em 0em 6.2em;
 }
 
+.centerBox {
+  position: absolute;
+  margin: 14em 0em 0em 10.3em;
+  text-align: center;
+}
 /*p × Superpose (clock)
     div(style='position:relative;width:350px;margin:auto')
       div(style='position:absolute;left:10px;top:10px')
