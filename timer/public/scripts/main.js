@@ -5,15 +5,16 @@ $( document ).ready(
     var second = 00;
     var secondKnob = $('.knob.second');
     var minuteKnob = $('.knob.minute');
+    
+    secondKnob.val(30);
+    minuteKnob.val(30);
 
     function updateClock () {
       $('#minute').text(minute);
       minuteKnob.val(minute).trigger('change');
       if (second == 00 ) {
-        $('#second').text("00");
         secondKnob.val(0).trigger('change');
       } else {
-        $('#second').text(second);
         secondKnob.val(second).trigger('change');
       }
     }
@@ -61,27 +62,51 @@ $( document ).ready(
     }
 
     function resetTimer () {
+      stopTimer();
       second = 00;
       minute = 30;
       updateClock();
     }
 
-    $('#start').on('click', function () {
-      counter = setInterval(timer,1000);
-    });
-    $('#addMinute').on('click', addMinute);
-    $('#takeMinute').on('click', takeMinute);
-    $('#stop').on('click', stopTimer);
+
     $('#reset').on('click', resetTimer);
     secondKnob.knob({
                       'min':0,
                       'max':59,
-                      'readOnly': true
-                    });
+                      'readOnly': true,
+                      'height': 300,
+                      'width': 300
+                    }
+    );
+    
     minuteKnob.knob({
                       'min':0,
                       'max':60,
-                      'readOnly': true
-                    });
+                      'readOnly': true,
+                      'height': 150,
+                      'width': 150
+                    }
+    );
+
+    $(document).on('click', '.play', function () {
+      if (counter) {
+        stopTimer();
+      }
+      counter = setInterval(timer,1000);
+      $('.action').removeClass('play');
+      $('.action').addClass('pause');
+    });
+
+    $(document).on('click', '.pause', function () {
+      if (counter) {
+        stopTimer();
+      }
+      $('.action').removeClass('pause');
+      $('.action').addClass('play');
+    });
+
+
+    $('#addMinute').on('click', addMinute);
+    $('#takeMinute').on('click', takeMinute);
   }
 );
