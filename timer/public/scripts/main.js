@@ -68,20 +68,7 @@ $( document ).ready(
       updateClock();
     }
 
-    $('.play').on('click', function () {
-      if (counter) {
-        stopTimer();
-      }
-      counter = setInterval(timer,1000);
-      // $('.action').removeClass('play');
-      // $('.action').addClass('pause');
-    });
 
-
-
-    $('#addMinute').on('click', addMinute);
-    $('#takeMinute').on('click', takeMinute);
-    $('#stop').on('click', stopTimer);
     $('#reset').on('click', resetTimer);
     secondKnob.knob({
                       'min':0,
@@ -89,13 +76,37 @@ $( document ).ready(
                       'readOnly': true,
                       'height': 300,
                       'width': 300
-                    });
+                    }
+    );
+    
     minuteKnob.knob({
                       'min':0,
                       'max':60,
                       'readOnly': true,
                       'height': 150,
                       'width': 150
-                    });
+                    }
+    );
+
+    $(document).on('click', '.play', function () {
+      if (counter) {
+        stopTimer();
+      }
+      counter = setInterval(timer,1000);
+      $('.action').removeClass('play');
+      $('.action').addClass('pause');
+    });
+
+    $(document).on('click', '.pause', function () {
+      if (counter) {
+        stopTimer();
+      }
+      $('.action').removeClass('pause');
+      $('.action').addClass('play');
+    });
+
+
+    $('#addMinute').on('click', addMinute);
+    $('#takeMinute').on('click', takeMinute);
   }
 );
