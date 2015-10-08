@@ -1,6 +1,7 @@
 var express = require('express'),
     app = express(),
-    path = require('path');
+    path = require('path'),
+    gulp = require('gulp');
 // ROUTE PATHS
 var routes = require('./routes/index');
 
