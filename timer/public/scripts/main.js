@@ -68,13 +68,17 @@ $( document ).ready(
       updateClock();
     }
 
-    $('.start').on('click', function () {
+    $('.play').on('click', function () {
       if (counter) {
         stopTimer();
       }
       counter = setInterval(timer,1000);
-      $('.start').remove
+      // $('.action').removeClass('play');
+      // $('.action').addClass('pause');
     });
+
+
+
     $('#addMinute').on('click', addMinute);
     $('#takeMinute').on('click', takeMinute);
     $('#stop').on('click', stopTimer);
