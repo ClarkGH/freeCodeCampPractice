@@ -68,7 +68,7 @@ $( document ).ready(
       updateClock();
     }
 
-    $('#start').on('click', function () {
+    $('.start').on('click', function () {
       if (counter) {
         stopTimer();
       }
