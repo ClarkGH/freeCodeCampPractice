@@ -6,8 +6,8 @@ $( document ).ready(
     var secondKnob = $('.knob.second');
     var minuteKnob = $('.knob.minute');
     
-    secondKnob.val(0);
-    minuteKnob.val(60);
+    secondKnob.val(30);
+    minuteKnob.val(30);
 
     function updateClock () {
       $('#minute').text(minute);
