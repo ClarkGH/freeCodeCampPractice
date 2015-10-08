@@ -3,13 +3,29 @@ extends layout
 block content
   .knobBox
     .secondBox
-      input.knob.second(data-min='0', data-max='60', data-bgcolor='#333', data-displayinput='false', data-width='200', data-height='200', data-thickness='.45')
+      input.knob.second(
+                        data-min='0', 
+                        data-max='60', 
+                        data-bgcolor='#333', 
+                        data-displayinput='false', 
+                        data-width='200', 
+                        data-height='200', 
+                        data-thickness='.45'
+                        )
     .minuteBox
-      input.knob.minute(data-min='0', data-max='60', data-bgcolor='#333', data-fgcolor='rgb(127, 255, 0)', data-displayinput='false', data-width='100', data-height='100', data-thickness='.3')
+      input.knob.minute(
+                        data-min='0',
+                        data-max='60', 
+                        data-bgcolor='#333', 
+                        data-fgcolor='rgb(127, 255, 0)', 
+                        data-displayinput='false', 
+                        data-width='100', 
+                        data-height='100', 
+                        data-thickness='.3')
     .circle
     .centerBox
       p#minute 30
-  .start
+  .action.start
   
   .timer
   button#addMinute More Time

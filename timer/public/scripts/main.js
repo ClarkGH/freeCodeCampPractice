@@ -73,6 +73,7 @@ $( document ).ready(
         stopTimer();
       }
       counter = setInterval(timer,1000);
+      $('.start').remove
     });
     $('#addMinute').on('click', addMinute);
     $('#takeMinute').on('click', takeMinute);
