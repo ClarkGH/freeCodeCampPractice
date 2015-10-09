@@ -1,30 +1,55 @@
-// gulp packages
-var gulp       = require('gulp'),
+var gulp  = require('gulp'),
+    gutil = require('gulp-util')
+
     jshint     = require('gulp-jshint'),
     sass       = require('gulp-sass'),
-    sourcemaps = require('gulp-sourcemaps');
+    concat     = require('gulp-concat'),
+    sourcemaps = require('gulp-sourcemaps'),
+    uglify     = require('gulp-uglify'),
 
-// define the default task and add the watch task to it
+    input  = {
+      'sass': 'sources/scss/**/*.scss',
+      'javascript': 'source/javascript/**/*.js',
+      'vendorjs': 'public/assets/javascript/vendor/**/*.js'
+    },
+
+    output = {
+      'stylesheets': 'public/assets/stylesheets',
+      'javascript': 'public/assets/javascript'
+    };
+
+/* run the watch task when gulp is called without arguments */
 gulp.task('default', ['watch']);
 
-// configure the jshint task
+/* run javascript through jshint */
 gulp.task('jshint', function() {
-  return gulp.src('source/javascript/**/*.js')
+  return gulp.src(input.javascript)
     .pipe(jshint())
     .pipe(jshint.reporter('jshint-stylish'));
 });
 
-// configure the sass task here
+/* compile scss files */
 gulp.task('build-css', function() {
   return gulp.src('source/scss/**/*.scss')
-    .pipe(sourcemaps.init()) //process the original source
+    .pipe(sourcemaps.init())
       .pipe(sass())
-    .pipe(sourcemaps.init()) //Add the map to the modified source
-    .pipe(gulp.dest('public/assets/stylesheets'));
-})
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(output.stylesheets));
+});
 
-// configure which files to watch and what tasks to use on file changes
+/* concat javascript files, minify if --type production */
+gulp.task('build-js', function() {
+  return gulp.src(input.javascript)
+    .pipe(sourcemaps.init())
+      .pipe(concat('bundle.js'))
+      //only uglify if gulp is ran with '--type production'
+      .pipe(gutil.env.type === 'production' ? uglify() : gutil.noop()) 
+    .pipe(sourcemaps.write())
+    .pipe(gulp.dest(output.javascript));
+});
+
+/* Watch these files for changes and run the task on update */
 gulp.task('watch', function() {
-  gulp.watch('source/javascript/**/*.js', ['jshint']);
-  gulp.watch('source/scss/**/*.scss', ['build-css']);
+  gulp.watch(input.javascript, ['jshint', 'build-js']);
+  gulp.watch(input.sass, ['build-css']);
 });
