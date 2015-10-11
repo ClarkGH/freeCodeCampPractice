@@ -60,13 +60,14 @@ $( document ).ready(
     }
 
     function resetTimer () {
+      stopTimer();
       second = 59;
       minute = 29;
       updateClock();
     }
 
 
-    $('#reset').on('click', resetTimer);
+    $('.reset').on('click', resetTimer);
     secondKnob.knob({
                       'min':0,
                       'max':59,
