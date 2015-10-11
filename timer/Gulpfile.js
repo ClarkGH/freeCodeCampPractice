@@ -1,12 +1,11 @@
 var gulp       = require('gulp'),
-    gulp-util  = require('gulp-util'),
     sourcemaps = require('gulp-sourcemaps'),
     sass       = require('gulp-sass');
 
 gulp.task('default', ['watch']);
 
 gulp.task('build-css', function() {
-  return gulp.src('source/scss/**/*.scss')
+  return gulp.src('src/scss/**/*.scss')
     .pipe(sourcemaps.init())
       .pipe(sass())
     .pipe(sourcemaps.write())
