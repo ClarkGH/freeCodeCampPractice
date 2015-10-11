@@ -78,7 +78,7 @@ $( document ).ready(
                       'width': 300
                     }
     );
-    
+
     minuteKnob.knob({
                       'min':0,
                       'max':60,
@@ -98,9 +98,7 @@ $( document ).ready(
     });
 
     $(document).on('click', '.pause', function () {
-      if (counter) {
-        stopTimer();
-      }
+      stopTimer();
       $('.action').removeClass('pause');
       $('.action').addClass('play');
     });
