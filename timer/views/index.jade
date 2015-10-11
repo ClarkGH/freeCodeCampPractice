@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  h1 Tron Timer
   .knobBox
     .secondBox
       input.knob.second(
@@ -25,8 +26,8 @@ block content
     .circle
     .centerBox
       p#minute 30
-  .action.play
-  .addMinute
-  .takeMinute
-  
-  button#reset Reset
+  .buttonBox
+    .action.play
+    .addMinute
+    .takeMinute
+    .power-icon
