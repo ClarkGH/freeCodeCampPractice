@@ -9,9 +9,9 @@ gulp.task('build-css', function() {
     .pipe(sourcemaps.init())
       .pipe(sass())
     .pipe(sourcemaps.write())
-    .pipe(gulp.dest(output.stylesheets));
+    .pipe(gulp.dest('./public/styles/'));
 });
 
 gulp.task('watch', function() {
-  gulp.watch(input.sass, ['build-css']);
+  gulp.watch('./src/scss/**/*.scss', ['build-css']);
 });
