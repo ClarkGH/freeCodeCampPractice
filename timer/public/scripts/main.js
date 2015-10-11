@@ -104,7 +104,7 @@ $( document ).ready(
     });
 
 
-    $('#addMinute').on('click', addMinute);
+    $('.addMinute').on('click', addMinute);
     $('#takeMinute').on('click', takeMinute);
   }
 );
