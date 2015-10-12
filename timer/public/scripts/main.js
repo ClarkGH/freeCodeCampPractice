@@ -25,7 +25,6 @@ $( document ).ready(
       } else {
         alert("The maximum amount of time you can set is 60 minutes");
       }
-      second = 00;
       updateClock();
     }
     function takeMinute () {
@@ -34,7 +33,6 @@ $( document ).ready(
       } else {
         alert("The minmum amount of time you can set is 0 minutes");
       }
-      second = 00;
       updateClock();
     }
 
@@ -63,13 +61,13 @@ $( document ).ready(
 
     function resetTimer () {
       stopTimer();
-      second = 00;
-      minute = 30;
+      second = 59;
+      minute = 29;
       updateClock();
     }
 
 
-    $('#reset').on('click', resetTimer);
+    $('.reset').on('click', resetTimer);
     secondKnob.knob({
                       'min':0,
                       'max':59,
@@ -104,7 +102,7 @@ $( document ).ready(
     });
 
 
-    $('#addMinute').on('click', addMinute);
-    $('#takeMinute').on('click', takeMinute);
+    $('.addMinute').on('click', addMinute);
+    $('.takeMinute').on('click', takeMinute);
   }
 );
