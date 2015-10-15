@@ -1,10 +1,22 @@
-struct jsw_node 
+int jsw_find_r(struct jsw_node *root, int data)
 {
-    int data;
-    struct jsw_node *link[2];
-};
+    if (root == NULL)
+    {
+        return 0;
+    }
+    else if (root->data == data)
+    {
+        return 1;
+    }
+    else
+    {
+        int dir = root->data < data;
 
-struct jsw_tree 
+        return jsw_find_r(root->link[dir], data);
+    }
+}
+
+int jsw_find(struct jsw_tree *tree, int data)
 {
-    struct jsw_node *root;
-};
+    return jsw_find_r(tree->root, data);
+}
