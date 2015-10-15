@@ -63,6 +63,8 @@ $( document ).ready(
       stopTimer();
       second = 59;
       minute = 29;
+      $('.action').removeClass('pause');
+      $('.action').addClass('play');
       updateClock();
     }
 
