@@ -1,20 +1,26 @@
-int jsw_find(struct jsw_tree *tree, int data)
+struct jsw_node *jsw_insert_r(struct jsw_node *root, int data)
 {
-    struct jsw_node *it = tree->root;
-
-    while (it != NULL)
+    if (root == NULL)
     {
-        if (it->data == data)
-        {
-            return 1;
-        }
-        else
-        {
-            int dir = it->data < data;
+        root = make_node(data);
+    }
+    else if (root->data == data)
+    {
+        return root;
+    }
+    else
+    {
+        int dir = root->data < data;
 
-            it = it->link[dir];
-        }
+        root->link[dir] = jsw_insert_r(root->link[dir], data);
     }
 
-    return 0;
+    return root;
+}
+
+int jsw_insert(struct jsw_tree *tree, int data)
+{
+    tree->root = jsw_insert_r(tree->root, data);
+
+    return 1;
 }
