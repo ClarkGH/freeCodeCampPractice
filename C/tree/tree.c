@@ -1,26 +1,59 @@
-struct jsw_node *jsw_insert_r(struct jsw_node *root, int data)
+int jsw_remove(struct jsw_tree *tree, int data)
 {
-    if (root == NULL)
+    if (tree->root != NULL)
     {
-        root = make_node(data);
-    }
-    else if (root->data == data)
-    {
-        return root;
-    }
-    else
-    {
-        int dir = root->data < data;
+        struct jsw_node *p = NULL, *succ;
+        struct jsw_node *it = tree->root;
+        int dir;
 
-        root->link[dir] = jsw_insert_r(root->link[dir], data);
+        for (;;)
+        {
+            if (it == NULL)
+            {
+                return 0;
+            }
+            else if (it->data == data)
+            {
+                break;
+            }
+
+            dir = it->data < data;
+            p = it;
+            it = it->link[dir];
+        }
+
+        if (it->link[0] != NULL && it->link[1] != NULL)
+        {
+            p = it;
+            succ = it->link[1];
+
+            while (succ->link[0] != NULL)
+            {
+                p = succ;
+                succ = succ->link[0];
+            }
+
+            it->data = succ->data;
+            p->link[p->link[1] == succ] = succ->link[1];
+
+            free(succ);
+        }
+        else
+        {
+            dir = it->link[0] == NULL;
+
+            if (p == NULL)
+            {
+                tree->root = it->link[dir];
+            }
+            else
+            {
+                p->link[p->link[1] == it] = it->link[dir];
+            }
+
+            free(it);
+        }
     }
-
-    return root;
-}
-
-int jsw_insert(struct jsw_tree *tree, int data)
-{
-    tree->root = jsw_insert_r(tree->root, data);
 
     return 1;
 }
