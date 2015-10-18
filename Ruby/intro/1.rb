@@ -1,6 +1,11 @@
-puts "Hello, please give me a word to randomize"
+numbers = [5, 17, 2, 899, 101, 4, 66, 123, 98]
+names   = []
 
-string = gets.chomp
-string = string.split('')
-string = string.shuffle
-puts "Your randomized word is #{string.join}"
+5.times do
+  puts "Please enter a name"
+  names << gets.chomp
+end
+
+names.each do |name|
+  puts "There once was a person named " + name + "."
+end
