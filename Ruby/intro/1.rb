@@ -1,3 +1,5 @@
-x = "hi mom"
+puts "Enter a string you want to reverse"
 
-puts x
+x = gets
+
+puts "The reverse string is: " + x.reverse
