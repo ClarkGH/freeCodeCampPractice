@@ -1,18 +1,17 @@
-puts "HELLO BOY, WHAT DO YOU WANT?"
+puts "Give me a starting year"
 
-response = gets.chomp
-num = rand(50)
+start = gets.chomp.to_i
 
-while response != response.upcase
-  puts "WHAT? SPEAK UP!"
-  response = gets.chomp
+puts "Give me an ending year"
+
+end_yr = gets.chomp.to_i
+
+while start < end_yr
+
+  if (end_yr % 4 == 0)
+    puts "#{end_yr}"
+  end
+  end_yr = (end_yr - 1)
 end
 
-puts "No not since #{1900 + num}"
-
-farewell = ""
-
-while farewell != "BYE BYE BYE"
-  farewell = gets.chomp
-end
-
+puts "These be leap years in those dates"
