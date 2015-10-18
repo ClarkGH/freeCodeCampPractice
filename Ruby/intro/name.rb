@@ -1,14 +1,5 @@
-names = []
-puts "What is your first name?"
+puts "What is your favorite number"
 
-names << gets.chomp
+answer = gets.chomp
 
-puts "What is your middle name, leave blank if none?"
-
-names << gets.chomp
-
-puts "what is your last name?"
-
-names << gets.chomp
-
-puts "Greetings #{names[0].capitalize} #{names[1].capitalize} #{names[2].capitalize}"
+puts "Well... #{answer} isn't a bad favorite. But #{answer.to_i + 1} is better"
