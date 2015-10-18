@@ -1,9 +1,11 @@
-puts "Welcome to the Likeable Program! Do you like me?"
+puts "Here is a questionairre for you chumps. What is your favorite color"
 
 answer = gets.chomp
 
-if answer == "yes"
-  puts "Ewww no, you're gross and a boy?"
-elsif answer == "no"
-  puts "Cool..."
+if answer == "puce"
+  puts "That's mine too"
+elsif answer == "blue" || answer == "red"
+  puts "laaaame"
+else
+  puts "That's cool"
 end
