@@ -1,8 +1,13 @@
-numbers = [5, 17, 2, 899, 101, 4, 66, 123, 98]
-sum = 0
+puts "Enter any US state"
 
-numbers.each do |num|
-  sum += num
-end
+response = gets.chomp
 
-puts sum
+states = {
+                    "california" => "wub wub wub",
+                    "utah"       => "More like pootah",
+                    "arizona"    => "I have two son",
+                    "nevada"     => "That is a place",
+                    "minnesota"  => "I like mayonaisse"
+                   }
+
+puts states[response]
