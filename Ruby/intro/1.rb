@@ -1,5 +1,9 @@
-puts "Enter a string you want to reverse"
+puts "Welcome to the Likeable Program! Do you like me?"
 
-x = gets
+answer = gets.chomp
 
-puts "The reverse string is: " + x.reverse
+if answer == "yes"
+  puts "Ewww no, you're gross and a boy?"
+elsif answer == "no"
+  puts "Cool..."
+end
