@@ -1,11 +1,8 @@
 numbers = [5, 17, 2, 899, 101, 4, 66, 123, 98]
-names   = []
+sum = 0
 
-5.times do
-  puts "Please enter a name"
-  names << gets.chomp
+numbers.each do |num|
+  sum += num
 end
 
-names.each do |name|
-  puts "There once was a person named " + name + "."
-end
+puts sum
