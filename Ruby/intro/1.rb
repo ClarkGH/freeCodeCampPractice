@@ -1,11 +1,20 @@
-puts "Here is a questionairre for you chumps. What is your favorite color"
+puts "Welcome to the number guessing game"
+puts "Guess a number between 1 and 100"
+answer = 1 + rand(100)
 
-answer = gets.chomp
+10.times do
+  guess = gets.chomp.to_i
 
-if answer == "puce"
-  puts "That's mine too"
-elsif answer == "blue" || answer == "red"
-  puts "laaaame"
-else
-  puts "That's cool"
+  if guess == answer
+    puts "You win!"
+    exit
+  elsif guess != answer
+    if guess > answer
+      puts "Lower"
+    else
+      puts "Higher"
+    end
+  end
 end
+
+puts "Game Over!"
