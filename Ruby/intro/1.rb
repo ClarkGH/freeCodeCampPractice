@@ -1,11 +1,6 @@
-puts "Welcome to TODO! Enter 3 tasks:"
+puts "Hello, please give me a word to randomize"
 
-tasks = []
-
-3.times do
-  puts "Enter a task:"
-  tasks << gets.chomp
-end
-
-puts "Please remeber to do the following:"
-puts tasks
+string = gets.chomp
+string = string.split('')
+string = string.shuffle
+puts "Your randomized word is #{string.join}"
