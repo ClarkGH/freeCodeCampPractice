@@ -8,7 +8,24 @@
 <body>
   <div ng-controller="testController">
     <h1>Months</h1>
-    <p>{{ months }}</p>
+    <div ng-repeat="month in months">    
+      <p ng-if="month.season == 'winter'" style="background: grey;">
+        {{ month.name }}
+      </p>
+
+      <p ng-if="month.season == 'spring'" style="background: red;">
+        {{ month.name }}
+      </p>
+
+      <p ng-if="month.season == 'summer'" style="background: yellow;">
+        {{ month.name }}
+      </p>
+
+      <p ng-if="month.season == 'fall'" style="background: orange;">
+        {{ month.name }}
+      </p>
+
+    </div>
   </div>
 </body>
 </html>
