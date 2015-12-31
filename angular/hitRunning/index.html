@@ -3,17 +3,12 @@
 <head>
   <title>Fast start with angular</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
-  <script src="controllers/test.js"></script>
+  <script src="js/controllers/months.js"></script>
 </head>
 <body>
   <div ng-controller="testController">
-    <h1>Scope</h1>
-
-    <p>$scope has access to any of the elements inside the div tag referenced by the ng-controller attribute/directive </p>
-
-    <p>Directives add much to the functionality of the page. You can create your own html tags if you want!</p>
-
-    <p>The price of a clark potato is now: {{ price | currency }}</p>
+    <h1>Months</h1>
+    <p>{{ months }}</p>
   </div>
 </body>
 </html>
