@@ -5,27 +5,9 @@
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="js/controllers/months.js"></script>
 </head>
-<body>
-  <div ng-controller="testController">
-    <h1>Months</h1>
-    <div ng-repeat="month in months">    
-      <p ng-if="month.season == 'winter'" style="background: grey;">
-        {{ month.name }}
-      </p>
-
-      <p ng-if="month.season == 'spring'" style="background: red;">
-        {{ month.name }}
-      </p>
-
-      <p ng-if="month.season == 'summer'" style="background: yellow;">
-        {{ month.name }}
-      </p>
-
-      <p ng-if="month.season == 'fall'" style="background: orange;">
-        {{ month.name }}
-      </p>
-
-    </div>
+<body>    
+  <div ng-controller="controller1">
+    <p>{{ price | currency }}</p>
   </div>
 </body>
 </html>
