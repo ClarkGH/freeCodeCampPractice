@@ -22,4 +22,6 @@ myApp.controller('controller1', ['$scope', function ( $scope ) {
     }
   ];
 
+  $scope.hi = function() {console.log('hi');}
+
 }]);
