@@ -4,22 +4,34 @@ myApp.filter('rearrange', function() {
   return function (input) {
     input = input.split(' ');
 
-  var currentIndex = input.length, temporaryValue, randomIndex;
+    var currentIndex = input.length, temporaryValue, randomIndex;
 
-  while (0 !== currentIndex) {
+    while (0 !== currentIndex) {
 
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+      randomIndex = Math.floor(Math.random() * currentIndex);
+      currentIndex -= 1;
 
-    temporaryValue = input[currentIndex];
-    input[currentIndex] = input[randomIndex];
-    input[randomIndex] = temporaryValue;
-  }
+      temporaryValue = input[currentIndex];
+      input[currentIndex] = input[randomIndex];
+      input[randomIndex] = temporaryValue;
+    }
 
-  return input.join(' '); 
+    return input.join(' '); 
   };
 });
 
+myApp.filter('doesIt', function () {
+  return function (input) {
+
+    input = input.split(' ');
+
+    for (var i = 0; i < input.length; i++) {
+      input[i] = input[i] + (' does it?')
+    }
+
+    return input.join(' ');
+  };
+});
 
 myApp.controller('controller1', ['$scope', function ( $scope ) {
   $scope.price = 13.01;

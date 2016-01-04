@@ -11,6 +11,9 @@
     <p>
       {{ 'hi everybody, my name is doctor nick! Would you like some ice cream' | rearrange }}?
     </p>
+    <p>
+      {{ 'There are no pants on the planet mars.' | doesIt }}
+    </p>
     <input ng-model="searchText">
     <div ng-repeat="friend in friends | filter:searchText">
       <li>
