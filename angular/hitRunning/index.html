@@ -9,7 +9,7 @@
 </head>
 <body>    
   <div ng-controller="controller1">
-    <input ng-model="searchText" ng-change="hi()">
+    <input ng-model="searchText">
     <div ng-repeat="friend in friends | filter:searchText">
       <li>
         {{ friend.name }}: {{ friend.phone }}

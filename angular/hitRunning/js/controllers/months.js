@@ -1,5 +1,26 @@
 var myApp = angular.module('myApp', []);
 
+myApp.filter('rearrange', function() {
+  return function (input) {
+    input = input.split(' ');
+
+  var currentIndex = input.length, temporaryValue, randomIndex;
+
+  while (0 !== currentIndex) {
+
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = input[currentIndex];
+    input[currentIndex] = input[randomIndex];
+    input[randomIndex] = temporaryValue;
+  }
+
+  return input.join(' '); 
+  };
+});
+
+
 myApp.controller('controller1', ['$scope', function ( $scope ) {
   $scope.price = 13.01;
 
@@ -22,6 +43,5 @@ myApp.controller('controller1', ['$scope', function ( $scope ) {
     }
   ];
 
-  $scope.hi = function() {console.log('hi');}
 
 }]);
