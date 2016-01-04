@@ -4,10 +4,22 @@
   <title>Fast start with angular</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="js/controllers/months.js"></script>
+
 </head>
 <body>    
   <div ng-controller="controller1">
-    <p>{{ price | currency }}</p>
+    <p>
+      {{ 'hi everybody, my name is doctor nick! Would you like some ice cream' | rearrange }}?
+    </p>
+    <p>
+      {{ 'There are no pants on the planet mars.' | doesIt }}
+    </p>
+    <input ng-model="searchText">
+    <div ng-repeat="friend in friends | filter:searchText">
+      <li>
+        {{ friend.name }}: {{ friend.phone }}
+      </li>
+    </div>
   </div>
 </body>
 </html>
