@@ -4,11 +4,13 @@
   <title>Fast start with angular</title>
   <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
   <script src="js/controllers/months.js"></script>
-  <script src="js/filters/random-word.js"></script>
 
 </head>
 <body>    
   <div ng-controller="controller1">
+    <p>
+      {{ 'hi everybody, my name is doctor nick! Would you like some ice cream' | rearrange }}?
+    </p>
     <input ng-model="searchText">
     <div ng-repeat="friend in friends | filter:searchText">
       <li>
