@@ -7,11 +7,12 @@
 </head>
 <body>    
   <div ng-controller="controller1">
-  <ol ng-repeat="friend in friends">
-    <li>
-      {{ friend.name }}: {{ friend.phone }}
-    </li>
-  </ol>
+    <input ng-model="searchText">
+    <div ng-repeat="friend in friends | filter:searchText">
+      <li>
+        {{ friend.name }}: {{ friend.phone }}
+      </li>
+    </div>
   </div>
 </body>
 </html>

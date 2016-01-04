@@ -13,13 +13,13 @@ myApp.controller('controller1', ['$scope', function ( $scope ) {
       phone: '213-2321'
     },
     {
-      name: 'Bilbo',
+      name: 'Frodo',
       phone: '213-1332'
     },
     {
-      name: 'Bilbo',
+      name: 'Hobo',
       phone: '321-3312'
     }
   ];
-  
+
 }]);
